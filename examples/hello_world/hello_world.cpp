@@ -14,9 +14,8 @@ limitations under the License.
 ==============================================================================*/
 
 #include <TensorFlowLite.h>
-
+#include <RTduino.h>
 #include "constants.h"
-#include "main_functions.h"
 #include "model.h"
 #include "output_handler.h"
 #include "tensorflow/lite/micro/all_ops_resolver.h"
@@ -39,7 +38,7 @@ alignas(16) uint8_t tensor_arena[kTensorArenaSize];
 }  // namespace
 
 // The name of this function is important for Arduino compatibility.
-void setup() {
+static void _sine_setup(void) {
   tflite::InitializeTarget();
 
   // Map the model into a usable data structure. This doesn't involve any
@@ -78,7 +77,7 @@ void setup() {
 }
 
 // The name of this function is important for Arduino compatibility.
-void loop() {
+static void _sine_loop(void) {
   // Calculate an x value to feed into the model. We compare the current
   // inference_count to the number of inferences per cycle to determine
   // our position within the range of possible x values the model was
@@ -113,3 +112,4 @@ void loop() {
   inference_count += 1;
   if (inference_count >= kInferencesPerCycle) inference_count = 0;
 }
+RTDUINO_SKETCH_LOADER("tfsine", _sine_setup, _sine_loop);
