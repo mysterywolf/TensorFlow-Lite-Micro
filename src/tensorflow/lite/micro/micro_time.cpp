@@ -27,9 +27,9 @@ limitations under the License.
 
 #include "tensorflow/lite/micro/micro_time.h"
 
-#include "peripherals/utility.h"
-
-#if defined(TF_LITE_USE_CTIME)
+#if !defined(TF_LITE_USE_CTIME)
+#include <Arduino.h>
+#else
 #include <ctime>
 #endif
 
@@ -47,7 +47,7 @@ uint32_t ticks_per_second() { return 1000000; }
 // required for a platform to support Tensorflow Lite for Microcontrollers
 // profiling. This returns 0 by default because timing is an optional feature
 // that builds without errors on platforms that do not need it.
-uint32_t GetCurrentTimeTicks() { return peripherals::MicrosecondsCounter(); }
+uint32_t GetCurrentTimeTicks() { return micros(); }
 
 #else  // defined(TF_LITE_USE_CTIME)
 
