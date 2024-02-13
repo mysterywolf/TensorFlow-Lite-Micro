@@ -19,15 +19,11 @@ limitations under the License.
 
 #include "tensorflow/lite/micro/debug_log.h"
 
-#if defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
-//#define ARDUINO_EXCLUDE_CODE
-#endif  // defined(ARDUINO) && !defined(ARDUINO_ARDUINO_NANO33BLE)
-
-#ifndef ARDUINO_EXCLUDE_CODE
-
 #include "Arduino.h"
 
 #define DEBUG_SERIAL_OBJECT (Serial)
+
+extern "C" void DebugLog(const char* s) { DEBUG_SERIAL_OBJECT.print(s); }
 
 namespace tflite {
 
@@ -45,5 +41,3 @@ void InitializeTarget() {
 }
 
 }  // namespace tflite
-
-#endif  // ARDUINO_EXCLUDE_CODE

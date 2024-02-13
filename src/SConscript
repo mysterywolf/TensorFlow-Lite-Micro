@@ -14,7 +14,6 @@ for root, dirs, files in os.walk(current_dir):
 
 group = DefineGroup('RTduino-libraries', src,
                     CPPPATH = [current_dir],
-                    CPPDEFINES = ['TF_LITE_STRIP_ERROR_STRINGS'],
                     depend = ['PKG_USING_ARDUINO_TENSORFLOW_LITE_MICRO'])
 
 Return('group')
