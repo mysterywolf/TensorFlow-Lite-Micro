@@ -19,7 +19,7 @@ limitations under the License.
 
 #include "tensorflow/lite/micro/debug_log.h"
 
-#include "Arduino.h"
+#include "tensorflow/Arduino.h"
 
 #define DEBUG_SERIAL_OBJECT (Serial)
 

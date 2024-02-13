@@ -14,10 +14,10 @@ limitations under the License.
 ==============================================================================*/
 
 #include <TensorFlowLite.h>
-#include <RTduino.h>
 #include "constants.h"
 #include "model.h"
 #include "output_handler.h"
+#include "tensorflow/Arduino.h"
 #include "tensorflow/lite/micro/all_ops_resolver.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_log.h"

@@ -15,7 +15,7 @@ limitations under the License.
 
 #include <algorithm>
 
-#include "Arduino.h"
+#include "tensorflow/Arduino.h"
 #include "constants.h"
 #include "output_handler.h"
 #include "tensorflow/lite/micro/micro_log.h"

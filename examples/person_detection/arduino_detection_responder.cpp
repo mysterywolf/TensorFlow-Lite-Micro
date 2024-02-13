@@ -21,7 +21,7 @@ limitations under the License.
 
 #include <cmath>
 
-#include "Arduino.h"
+#include "tensorflow/Arduino.h"
 #include "detection_responder.h"
 #include "tensorflow/lite/micro/micro_log.h"
 

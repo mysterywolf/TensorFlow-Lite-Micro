@@ -30,7 +30,7 @@ using namespace test_over_serial;
 
 #ifndef ARDUINO_EXCLUDE_CODE
 
-#include "Arduino.h"
+#include "tensorflow/Arduino.h"
 
 namespace {
 

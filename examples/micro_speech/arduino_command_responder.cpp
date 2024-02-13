@@ -19,7 +19,7 @@ limitations under the License.
 
 #ifndef ARDUINO_EXCLUDE_CODE
 
-#include "Arduino.h"
+#include "tensorflow/Arduino.h"
 #include "command_responder.h"
 #include "tensorflow/lite/micro/micro_log.h"
 
