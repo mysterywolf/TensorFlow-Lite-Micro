@@ -11,14 +11,6 @@ microcontroller.
 The model is trained to replicate a `sine` function and generates a pattern of
 data to blink the built-in LED in a fade in/out pattern.
 
-## Table of contents
-<!--ts-->
-* [Table of contents](#table-of-contents)
-* [Deploy to Arduino](#deploy-to-arduino)
-  * [Install the Arduino_TensorFlowLite library](#install-the-arduino_tensorflowlite-library)
-  * [Load and run the example](#load-and-run-the-example)
-<!--te-->
-
 ## Deploy to Arduino
 
 The following instructions will help you build and deploy this sample
@@ -35,25 +27,35 @@ built-in LED as the one being controlled. However, on some boards, this built-in
 LED is not attached to a pin with PWM capabilities. In this case, the LED will
 blink instead of fading.
 
+You can modify the LED pin number in `arduino_output_handler.cpp` file to adjust to
+a pin which can generate the PWM.
+
 ![Animation on Nano 33 BLE Sense](../../docs/hello_world_animation.gif)
 
-### Install the Arduino_TensorFlowLite library
+### Install the TensorFlow Lite Micro library
 
-To install the TensorFlow Lite Micro for Arduino library, see the
-[how to install](../../README.md#how-to-install) instructions.
+In the menuconfig:
+
+- Enable TensorFlow Lite Micro
+- Enable hello world example
+
+```Kconfig
+RT-Thread online packages  --->
+    Arduino libraries  --->
+        Data Processing  --->
+            [*] TensorFlow Lite Micro: TensorFlow Lite for Microcontrollers (TLFM) Library for RTduino --->
+                Examples --->
+                    [*] Enable hello world example
+```
 
 ### Load and run the example
 
-Once the library has been added, go to `File -> Examples`. You should see an
-entry within the list named `Arduino_TensorFlowLite`. Select
-it and click `hello_world` to load the example.
-
-Use the Arduino IDE to build and upload the example. Once it is running,
-you should see the built-in LED on your device flashing.
-
-The Arduino Desktop IDE includes a plotter that we can use to display the sine
-wave graphically. To view it, go to `Tools -> Serial Plotter`. You will see one
-datapoint being logged for each inference cycle, expressed as a number between 0
-and 255.
+Once you select `Enable hello world example`, after compiling, the hello world example will automatically run, and you will see the LED is changing. Meanwhile, the serial also will print a sine wave time series number.
 
 ![Serial Plotter with Nano 33 BLE Sense](../../docs/hello_world_serial_plotter.png)
+
+### Reference
+
+- https://www.tensorflow.org/lite/microcontrollers/get_started_low_level
+- https://www.youtube.com/watch?v=BzzqYNYOcWc
+- https://www.youtube.com/watch?v=8N6-WQsxwxA&list=PLtT1eAdRePYoovXJcDkV9RdabZ33H6Di0&index=2
