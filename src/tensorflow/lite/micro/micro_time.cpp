@@ -28,7 +28,7 @@ limitations under the License.
 #include "tensorflow/lite/micro/micro_time.h"
 
 #if !defined(TF_LITE_USE_CTIME)
-#include "tensorflow/Arduino.h"
+#include <RTduino.h>
 #else
 #include <ctime>
 #endif

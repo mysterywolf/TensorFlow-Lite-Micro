@@ -17,12 +17,15 @@ limitations under the License.
 #include "constants.h"
 #include "model.h"
 #include "output_handler.h"
-#include "tensorflow/Arduino.h"
 #include "tensorflow/lite/micro/all_ops_resolver.h"
 #include "tensorflow/lite/micro/micro_interpreter.h"
 #include "tensorflow/lite/micro/micro_log.h"
 #include "tensorflow/lite/micro/system_setup.h"
 #include "tensorflow/lite/schema/schema_generated.h"
+
+#define RTDUINO_NO_MIN
+#define RTDUINO_NO_MAX
+#include <RTduino.h>
 
 // Globals, used for compatibility with Arduino-style sketches.
 namespace {

@@ -14,11 +14,13 @@ limitations under the License.
 ==============================================================================*/
 
 #include <algorithm>
-
-#include "tensorflow/Arduino.h"
 #include "constants.h"
 #include "output_handler.h"
 #include "tensorflow/lite/micro/micro_log.h"
+
+#define RTDUINO_NO_MIN
+#define RTDUINO_NO_MAX
+#include <RTduino.h>
 
 // The pin of the Arduino's built-in LED
 int led = LED_BUILTIN;

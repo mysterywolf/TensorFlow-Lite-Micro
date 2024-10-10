@@ -20,7 +20,7 @@ limitations under the License.
 // more code.
 
 #include "tensorflow/lite/micro/micro_string.h"
-#include "tensorflow/Arduino.h"
+#include <RTduino.h>
 
 extern "C" int MicroVsnprintf(char* output, int len, const char* format,
                               va_list args) {
