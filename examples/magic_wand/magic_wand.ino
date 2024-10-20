@@ -12,7 +12,6 @@ limitations under the License.
 
 #include <ArduinoBLE.h>
 #include <Arduino_LSM9DS1.h>
-#include <TensorFlowLite.h>
 
 #include <cmath>
 
