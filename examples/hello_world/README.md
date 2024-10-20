@@ -1,9 +1,7 @@
-<!-- mdformat off(b/169948621#comment2) -->
-
 # Hello World Example
 
 This example is designed to demonstrate the absolute basics of using [TensorFlow
-Lite for Microcontrollers](https://www.tensorflow.org/lite/microcontrollers).
+Lite for Microcontrollers](https://github.com/RTduino-libraries/tflite-micro/tree/tinyml-petebook-baseline/tensorflow/lite/micro/examples/hello_world).
 It includes the full end-to-end workflow of training a model, converting it for
 use with TensorFlow Lite for Microcontrollers for running inference on a
 microcontroller.
@@ -18,19 +16,13 @@ to [Arduino](https://www.arduino.cc/) devices.
 
 The sample has been tested with the following devices:
 
-- [Arduino Nano 33 BLE Sense](https://store.arduino.cc/usa/nano-33-ble-sense-with-headers)
-- [Arduino Tiny Machine Learning Kit](https://store-usa.arduino.cc/products/arduino-tiny-machine-learning-kit)
+- [RTduino STM32F412 Nulceo Board](https://github.com/RT-Thread/rt-thread/tree/master/bsp/stm32/stm32f412-st-nucleo)
 
-The sample will use PWM to fade an LED on and off according to the model's
-output. In the code, the `LED_BUILTIN` constant is used to specify the board's
-built-in LED as the one being controlled. However, on some boards, this built-in
-LED is not attached to a pin with PWM capabilities. In this case, the LED will
-blink instead of fading.
+The sample will use PWM to fade an LED on and off according to the model's output. In the code, the `LED_BUILTIN` constant is used to specify the board's built-in LED as the one being controlled. However, on some boards, this built-in LED is not attached to a pin with PWM capabilities. In this case, the LED will blink instead of fading.
 
-You can modify the LED pin number in `arduino_output_handler.cpp` file to adjust to
-a pin which can generate the PWM.
+You can modify the LED pin number in `arduino_output_handler.cpp` file to adjust to a pin which can generate the PWM. By default, it is `int led = LED_BUILTIN`. For most of the board, `LED_BUILTIN` doesn't support PWM feature, you may see the LED is blinking with changing frequency.
 
-![Animation on Nano 33 BLE Sense](../../docs/hello_world_animation.gif)
+![Animation on Nano 33 BLE Sense](images/hello_world_animation.gif)
 
 ### Install the TensorFlow Lite Micro library
 
@@ -52,7 +44,9 @@ RT-Thread online packages  --->
 
 Once you select `Enable hello world example`, after compiling, the hello world example will automatically run, and you will see the LED is changing. Meanwhile, the serial also will print a sine wave time series number.
 
-![Serial Plotter with Nano 33 BLE Sense](../../docs/hello_world_serial_plotter.png)
+![Serial Plotter with Nano 33 BLE Sense](images/hello_world_serial_plotter.png)
+
+![GUI Plotter with STM32F746](images/animation_on_STM32F746.gif)
 
 ### Reference
 
