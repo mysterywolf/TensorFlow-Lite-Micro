@@ -1,0 +1,41 @@
+name: Holloworld
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow on'
+        default: 'rt-dev'
+        required: true
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.branch == 'rt-dev'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.7'
+
+      - name: Install dependencies
+        run: |
+          sudo apt install xxd
+          python -m pip install --upgrade pip
+          pip -qq install tensorflow==2.4 pandas matplotlib
+
+      - name: Run test.py
+        run: python examples/hello_world/ci/test.py
+
+      - name: xxd C file
+        run: |
+          xxd -i /home/runner/work/TensorFlow-Lite-Micro/TensorFlow-Lite-Micro/models/model.tflite > /home/runner/work/TensorFlow-Lite-Micro/TensorFlow-Lite-Micro/models/model_data.cc
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: model.tflite
+          path: /home/runner/work/TensorFlow-Lite-Micro/TensorFlow-Lite-Micro/models/model_data.cc
